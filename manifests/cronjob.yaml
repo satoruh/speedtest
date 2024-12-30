@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: speedtest
+spec:
+  schedule: "*/10 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - image: harbor.k01.satoruh.org/library/speedtest:latest
+            name: speedtest
+          restartPolicy: Never
